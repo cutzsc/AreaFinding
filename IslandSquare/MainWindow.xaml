@@ -1,0 +1,211 @@
+﻿<Window x:Class="IslandSquare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IslandSquare"
+        xml:space="preserve" mc:Ignorable="d"
+        Title="Программа для поиска площади с помощью метода Монте-Карло" Icon="imgs\pin_icon.ico"
+        Height="710" Width="1150" MinWidth="1000" MinHeight="710">
+    <Window.Resources>
+        <Style TargetType="MenuItem">
+            <Setter Property="Padding" Value="8, 3"></Setter>
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="Padding" Value="8, 3"></Setter>
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="5, 0"></Setter>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="8, 0"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5, 4"></Setter>
+            <Setter Property="MinHeight" Value="21"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5, 4"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Right"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="MinHeight" Value="21"></Setter>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="5, 4"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="#FF007ACC" BorderThickness="1" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="4, 4"></Setter>
+            <Setter Property="Padding" Value="4, 0"></Setter>
+            <Setter Property="MinWidth" Value="80"></Setter>
+            <Setter Property="MinHeight" Value="21"></Setter>
+            <Setter Property="Background" Value="#FF007ACC"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#FF0A94F1"></Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="#FF0A94F1" BorderThickness="1" Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <DataTemplate x:Key="colorsListTemplate">
+            <Rectangle Width="20" Height="20" Fill="{Binding ColorBrush}"></Rectangle>
+        </DataTemplate>
+        <DataTemplate x:Key="rangeColMinTemp">
+            <Rectangle Width="30" Height="20" Fill="{Binding MinColorBrush}"></Rectangle>
+        </DataTemplate>
+        <DataTemplate x:Key="rangeColMaxTemp">
+            <Rectangle Width="30" Height="20" Fill="{Binding MaxColorBrush}"></Rectangle>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="400px"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="White">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" Click="OpenFile_Click"></MenuItem>
+                <MenuItem Header="Обновить" Click="RefreshFile_Click"></MenuItem>
+                <MenuItem Header="Закрыть" Click="CloseFile_Click"></MenuItem>
+                <MenuItem Header="Выход" Click="Exit_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Параметры" Click="Settings_Click"></MenuItem>
+        </Menu>
+        <Image Name="picture" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Margin="3"
+               MouseDown="Picture_MouseDown" MouseUp="Picture_MouseUp" MouseMove="Picture_MouseMove" MouseLeave="Picture_MouseLeave"></Image>
+        <TabControl Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+            <TabItem Header="Главная">
+                <Grid Margin="15, 15, 15, 15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="5"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2">Количество испытаний:</TextBlock>
+                    <TextBox Grid.Row="0" Name="nTBox" Grid.Column="2" Grid.ColumnSpan="2">10000</TextBox>
+                    <TextBlock Grid.Row="1" Grid.ColumnSpan="2">Исходная площадь:</TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Name="sourceAreaTBox"/>
+                    <TextBlock Grid.Row="2" Grid.ColumnSpan="2">Проведено испытаний:</TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Name="shotsCountTBlock">0</TextBlock>
+                    <TextBlock Grid.Row="3" Grid.ColumnSpan="2">Количество попаданий:</TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Name="accuracyCountTBlock">0</TextBlock>
+                    <TextBlock Grid.Row="4" Grid.ColumnSpan="2">Площадь:</TextBlock>
+                    <TextBlock Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Name="areaTBlock">0</TextBlock>
+                    <DockPanel Grid.Row="5" Grid.ColumnSpan="4" HorizontalAlignment="Right">
+                        <Label Target="{Binding ElementName=instantCalcChBox}" Margin="8,4,0,4">Расчет без визуализации</Label>
+                        <CheckBox Name="instantCalcChBox" VerticalAlignment="Center" Margin="0,4,5,4"/>
+                    </DockPanel>
+                    <Button Name="pauseButton" Click="Pause_Click" Grid.Row="7" Grid.Column="0">Пауза</Button>
+                    <Button Name="resumeButton" Click="Resume_Click" Grid.Row="7" Grid.Column="1">Продолжить</Button>
+                    <Button Name="stopButton" Click="Stop_Click" Grid.Row="7" Grid.Column="2">Стоп</Button>
+                    <Button Name="calculateButton" Click="Calculate_Click" Grid.Row="7" Grid.Column="3">Рассчитать</Button>
+                </Grid>
+            </TabItem>
+            <TabItem Name="conditionsRange" Header="Условия диапазона цветов">
+                <Grid Margin="15, 15, 15, 15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="0"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="1" Grid.ColumnSpan="4" VerticalAlignment="Bottom">Список выбранных цветов:</Label>
+                    <ListView Grid.Row="2" Grid.RowSpan="5" Grid.ColumnSpan="2" Height="200" Name="chosenColorsList" KeyDown="ColorsList_KeyDown" Margin="5,0,5,10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="35px" CellTemplate="{StaticResource colorsListTemplate}"></GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding Color.R}">R</GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding Color.G}">G</GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding Color.B}">B</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Name="recordRangeButton" Click="RecordRange_Click">Запись</Button>
+                    <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Name="addToRangeButton" Click="AddToRange_Click">Добавить в диапазон</Button>
+                    <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Name="delChosenColButton" Click="DelColor_Click">Удалить</Button>
+                    <Button Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Name="clearChosenListButton" Click="ClearList_Click">Очистить список</Button>
+                    <Label Grid.Row="8" Grid.ColumnSpan="4">Список диапазона цветов:</Label>
+                    <ListView Grid.Row="9" Grid.ColumnSpan="4" Name="rangeColorsList" Height="200" KeyDown="ColorsList_KeyDown">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="45px" CellTemplate="{StaticResource rangeColMinTemp}"></GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding MinColor.R}">R</GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding MinColor.G}">G</GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding MinColor.B}">B</GridViewColumn>
+                                <GridViewColumn Width="45px" CellTemplate="{StaticResource rangeColMaxTemp}"></GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding MaxColor.R}">R</GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding MaxColor.G}">G</GridViewColumn>
+                                <GridViewColumn Width="35px" DisplayMemberBinding="{Binding MaxColor.B}">B</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DockPanel Grid.Row="10" Grid.ColumnSpan="4" HorizontalAlignment="Right">
+                        <Label Target="{Binding ElementName=shapeRangeChBox}" Margin="8,4,0,4">Соответствие диапазона с цветами искомой фигуры</Label>
+                        <CheckBox Name="shapeRangeChBox" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,4,5,4"></CheckBox>
+                    </DockPanel>
+                    <DockPanel Grid.Row="11" Grid.ColumnSpan="4" HorizontalAlignment="Right">
+                        <Button Name="clearRangeListButton" Click="ClearList_Click">Очистить список</Button>
+                        <Button Name="delRangeColButton" Click="DelColor_Click">Удалить</Button>
+                    </DockPanel>
+                    <TextBlock Grid.Row="7" Name="currentCursorPosLabel" HorizontalAlignment="Left" VerticalAlignment="Center">X: 000&#x09;Y: 000</TextBlock>
+                    <TextBlock Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Name="currentCursorColorLabel" HorizontalAlignment="Left" VerticalAlignment="Center">&#x09;RGB (000, 000, 000)</TextBlock>
+                    <Border Grid.Row="7" Grid.Column="3" Width="40" Height="25" BorderBrush="#FF828790" BorderThickness="1" HorizontalAlignment="Left">
+                        <Rectangle Name="currentColorRect"></Rectangle>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <DockPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Background="#FF007ACC">
+            <TextBlock Margin="10,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="0">Статус:</TextBlock>
+            <TextBlock Margin="5,0,0,0" Name="statusTBlock" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="0">Ожидается изображение...</TextBlock>
+        </DockPanel>
+    </Grid>
+</Window>

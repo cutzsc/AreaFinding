@@ -1,0 +1,37 @@
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\IslandSquare.csprojResolveAssemblyReference.cache
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\MainWindow.g.cs
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\App.g.cs
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\MainWindow.baml
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\IslandSquare.Properties.Resources.resources
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\IslandSquare.csproj.GenerateResource.Cache
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\IslandSquare.csproj.CoreCompileInputs.cache
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\SettingsWindow.g.cs
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\SettingsWindow.baml
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\bin\Debug\Программа для расчета площади с помощью метода Монте-Карло.exe.config
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\bin\Debug\Программа для расчета площади с помощью метода Монте-Карло.exe
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\bin\Debug\Программа для расчета площади с помощью метода Монте-Карло.pdb
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло_MarkupCompile.cache
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло_MarkupCompile.lref
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло.g.resources
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло.exe
+C:\Users\sam\source\repos\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло.pdb
+D:\downloads\IslandSquare\IslandSquare\bin\Debug\Программа для расчета площади с помощью метода Монте-Карло.exe.config
+D:\downloads\IslandSquare\IslandSquare\bin\Debug\Программа для расчета площади с помощью метода Монте-Карло.exe
+D:\downloads\IslandSquare\IslandSquare\bin\Debug\Программа для расчета площади с помощью метода Монте-Карло.pdb
+D:\downloads\IslandSquare\IslandSquare\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\IslandSquare.csprojAssemblyReference.cache
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\MainWindow.g.cs
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\SettingsWindow.g.cs
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\App.g.cs
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло_MarkupCompile.cache
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло_MarkupCompile.lref
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\MainWindow.baml
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\SettingsWindow.baml
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло.g.resources
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\IslandSquare.Properties.Resources.resources
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\IslandSquare.csproj.GenerateResource.cache
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\IslandSquare.csproj.CoreCompileInputs.cache
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\IslandSquare.csproj.CopyComplete
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло.exe
+D:\downloads\IslandSquare\IslandSquare\obj\Debug\Программа для расчета площади с помощью метода Монте-Карло.pdb
